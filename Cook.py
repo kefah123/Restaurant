@@ -51,3 +51,11 @@ class Cook:
         s += "Shift:", self.shift + "\n"
         s += "Station:", self.station.name
         return s
+
+
+    def __eq__(self, other):
+        return self.id_no == other.id_no
+
+    def __hash__(self):
+        return hash(self.id_no)
+

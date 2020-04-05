@@ -38,3 +38,10 @@ class Station:
         for dish, ingredient in self.dishes.items():
             s += dish + ": " + ingredient
         return s
+
+    def __eq__(self, other):
+        return self.name == other.name
+
+    def __hash__(self):
+        return hash(self.name)
+
