@@ -45,9 +45,9 @@ class Cook:
 
     def to_string(self):
         s = "Name:", self.name + "\n"
-        s += "ID:", self.id_no + "\n"
-        s += "Age:", self.age + "\n"
-        s += "Wage:", self.wage + "\n"
+        s += "ID:", str(self.id_no) + "\n"
+        s += "Age:", str(self.age) + "\n"
+        s += "Wage:", str(self.wage) + "\n"
         s += "Shift:", self.shift + "\n"
         s += "Station:", self.station.name
         return s
