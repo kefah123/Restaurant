@@ -15,7 +15,7 @@ class Kitchen:
                 found_station = 1
 
         if found_station == 1:
-            id_no = len(self.cooks) + random.randint(0, 75) + name[0]
+            id_no = name[0] + str(len(self.cooks)) + name[-1]
             self.cooks.add(Cook(name, age, wage, shift, id_no, station_name))
         else:
             print("That station does not currently exist in this kitchen. Use the 'add_station method to add a new "
@@ -36,13 +36,16 @@ class Kitchen:
                 return cook
             else:
                 print("That cook does not currently exist in the kitchen.")
+                return False
 
     def promote_cook(self, id_no, wage):
         for cook in self.cooks:
             if id_no == cook.get_id_no():
                 cook.set_wage(wage)
+                return True
             else:
                 print("That cook does not currently exist in the kitchen.")
+                return False
 
     def find_station(self, station_name):
         for station in self.stations:
@@ -50,9 +53,14 @@ class Kitchen:
                 return station
             else:
                 print("That station does not currently exist in the kitchen.")
+                return False
 
     def fire_employee(self, id_no):
         for cook in self.cooks:
             if id_no == cook.get_id_no():
                 self.cooks.remove(cook)
+                return True
+            else:
+                print("That cook is not currently employed in the kitchen.")
+                return False
 
