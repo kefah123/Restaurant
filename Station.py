@@ -25,7 +25,7 @@ class Station:
     def get_dish_ingredients(self, dish):
         return self.dishes[dish]
 
-    def find_dish(self, ingredient):
+    def find_dish_by_ingredient(self, ingredient):
         found_dishes = []
         for dish in self.dishes:
             if ingredient in self.dishes[dish]:
