@@ -31,9 +31,6 @@ class Cook:
     def set_station(self, station_name):
         self.station = Station(station_name)
 
-    def set_id_no(self, id_no):
-        self.id_no = id_no
-
     def set_name(self, name):
         self.name = name
 
