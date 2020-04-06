@@ -39,7 +39,9 @@ class Station:
             s += dish + ": "
             for ingredient in ingredients:
                 s += ingredient + ", "
-        return s.rstrip(", ")
+            s = s[:-2]
+            s += "\n"
+        return s
 
     def __eq__(self, other):
         return self.name == other.name
