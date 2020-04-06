@@ -1,7 +1,7 @@
 from Kitchen import Kitchen
 
 
-# This program simulates a simple restaurant kitchen
+# This program simulates a simple restaurant kitchen in operation
 
 def main():
     the_spot = Kitchen()
