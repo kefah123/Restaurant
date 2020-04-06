@@ -53,6 +53,30 @@ class TestKitchen(unittest.TestCase):
         self.myKitchen.fire_employee("K0i")
         self.assertFalse(self.myKitchen.find_cook("K0i"))
 
+    def test_update_station_dish(self):
+        self.myKitchen.add_station("Apps")
+        self.myKitchen.update_station_dish("Apps", "Fried calamari", ("Scallions", "Calamari"))
+        station = Station("Apps")
+        station.update_dish("Fried calamari", ("Scallions", "Calamari"))
+        self.assertEqual(self.myKitchen.find_station("Apps"), station)
+
+    def test_update_station_difficulty(self):
+        self.myKitchen.add_station("Apps")
+        self.myKitchen.update_station_dish("Apps", "Fried calamari", ("Scallions", "Calamari"))
+        self.myKitchen.update_station_difficulty("Apps", "moderate")
+        station = Station("Apps")
+        station.update_dish("Fried calamari", ("Scallions", "Calamari"))
+        station.set_difficulty("moderate")
+        self.assertEqual(self.myKitchen.find_station("Apps"), station)
+
+    def test_find_dish_using_ingredient(self):
+        self.myKitchen.add_station("Apps")
+        self.myKitchen.add_station("Saute")
+        self.myKitchen.update_station_dish("Apps", "Fried calamari", ("Scallions", "Calamari"))
+        self.myKitchen.update_station_dish("Saute", "Ahi tuna", ("Scallions", "Tuna"))
+        self.myKitchen.update_station_dish("Apps", "Nachos",("Scallions","Nachos"))
+        self.assertEqual({"Fried calamari", "Ahi tuna", "Nachos"}, self.myKitchen.find_dish_using_ingredient("Scallions"))
+
 
 if __name__ == '__main__':
     unittest.main()
