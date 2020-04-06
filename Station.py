@@ -35,13 +35,14 @@ class Station:
 
     def to_string(self):
         s = "Station: " + self.name + "\nDifficulty: " + self.difficulty + "\nDishes:\n"
-        for dish, ingredient in self.dishes.items():
-            s += dish + ": " + ingredient
-        return s
+        for dish, ingredients in self.dishes.items():
+            s += dish + ": "
+            for ingredient in ingredients:
+                s += ingredient + ", "
+        return s.rstrip(", ")
 
     def __eq__(self, other):
         return self.name == other.name
 
     def __hash__(self):
         return hash(self.name)
-
