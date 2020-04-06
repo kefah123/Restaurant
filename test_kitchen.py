@@ -50,6 +50,7 @@ class TestKitchen(unittest.TestCase):
     def test_fire_employee(self):
         self.myKitchen.add_station("Saute")
         self.myKitchen.add_cook("Kwasi", 23, 14, "swing", "Saute")
+        self.myKitchen.add_cook("Efah", 23, 14, "swing", "Saute")
         self.myKitchen.fire_employee("K0i")
         self.assertFalse(self.myKitchen.find_cook("K0i"))
 
