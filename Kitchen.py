@@ -80,7 +80,6 @@ class Kitchen:
     def find_dish_using_ingredient(self,ingredient):
         found_dishes = set()
         for station in self.stations:
-            print(station.to_string())
             for dish in station.find_dish_by_ingredient(ingredient):
                 found_dishes.add(dish)
         return found_dishes
