@@ -19,7 +19,7 @@ class TestStation(unittest.TestCase):
 
     def test_to_string(self):
         self.assertEqual("Station: Apps\nDifficulty: Moderate\nDishes:\nFried Calamari: frozen calamari,"
-                         " scallions, black sesame seeds, ponzu sauce",self.myStation.to_string())
+                         " scallions, black sesame seeds, ponzu sauce\n",self.myStation.to_string())
 
 
 if __name__ == '__main__':
