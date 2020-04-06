@@ -1,6 +1,5 @@
 from Cook import Cook
 from Station import Station
-import random
 
 
 class Kitchen:
@@ -34,33 +33,54 @@ class Kitchen:
         for cook in self.cooks:
             if id_no == cook.get_id_no():
                 return cook
-            else:
-                print("That cook does not currently exist in the kitchen.")
-                return False
+        print("That cook does not currently exist in the kitchen.")
+        return False
 
     def promote_cook(self, id_no, wage):
         for cook in self.cooks:
             if id_no == cook.get_id_no():
                 cook.set_wage(wage)
                 return True
-            else:
-                print("That cook does not currently exist in the kitchen.")
-                return False
+        print("That cook does not currently exist in the kitchen.")
+        return False
 
     def find_station(self, station_name):
         for station in self.stations:
             if station_name == station.get_name():
                 return station
-            else:
-                print("That station does not currently exist in the kitchen.")
-                return False
+        print("That station does not currently exist in the kitchen.")
+        return False
 
     def fire_employee(self, id_no):
         for cook in self.cooks:
             if id_no == cook.get_id_no():
                 self.cooks.remove(cook)
                 return True
-            else:
-                print("That cook is not currently employed in the kitchen.")
-                return False
+        print("That cook is not currently employed in the kitchen.")
+        return False
 
+    def update_station_dish(self, station_name, dish, ingredients):
+        updated_station = self.find_station(station_name)
+        if not updated_station:
+            return
+        else:
+            self.stations.remove(Station(station_name))
+            updated_station.update_dish(dish, ingredients)
+            self.stations.add(updated_station)
+
+    def update_station_difficulty(self, station_name, difficulty):
+        updated_station = self.find_station(station_name)
+        if not updated_station:
+            return
+        else:
+            self.stations.remove(Station(station_name))
+            updated_station.set_difficulty(difficulty)
+            self.stations.add(updated_station)
+
+    def find_dish_using_ingredient(self,ingredient):
+        found_dishes = set()
+        for station in self.stations:
+            print(station.to_string())
+            for dish in station.find_dish_by_ingredient(ingredient):
+                found_dishes.add(dish)
+        return found_dishes
