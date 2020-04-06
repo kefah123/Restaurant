@@ -1,6 +1,6 @@
 from Station import Station
 
-
+"""This class simulates a cook working at a restaurant """
 class Cook:
     def __init__(self, name, age, wage, shift, id_no, station_name):
         self.name = name
